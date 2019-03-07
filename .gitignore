@@ -1,0 +1,12 @@
+*.tlog
+*.vs*
+
+*Debug*
+
+*.txt
+
+*.opendb
+
+*.doc
+*.docx
+*.pdf
