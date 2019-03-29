@@ -1,8 +1,18 @@
 #include <iostream>
+#include <fstream>
+#include <math.h>
 
-#define SIZE 12					// 从2^0 算到2^SIZE
+#define SIZE		3					// 从2^0 算到2^SIZE
+#define STARTPOINT	1
+#define ENDPOINT	6
+#define FUNCTION	(sin(x))
+#define STANDARDVALUE	(cos(1) - cos(6))
 
 using namespace std;
 
 double fx(double x);
+double trapezoid(double(*fx)(double), double startPoint, double endPoint, int stepPower);
+double errorOrder(double thisError, double lastError);
+
 #pragma once
+

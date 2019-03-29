@@ -10,7 +10,7 @@ double trapezoid(double(*fx)(double), double startPoint, double endPoint, int st
 		cout << "ERROR in trapezoid: start point is larger than end point." << endl;
 		return(NULL);
 	}
-	double stepLength = (endPoint - startPoint) / (double)step;
+	double stepLength = (endPoint - startPoint) / (double)stepNumber;
 
 	result += (fx(startPoint) + fx(endPoint)) / (double)2;
 	for (int i = 1; i < stepNumber; i++)
