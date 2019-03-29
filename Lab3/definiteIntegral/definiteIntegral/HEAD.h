@@ -2,7 +2,7 @@
 #include <fstream>
 #include <math.h>
 
-#define SIZE		3					// 从2^0 算到2^SIZE
+#define SIZE		12					// 从2^0 算到2^SIZE
 #define STARTPOINT	1
 #define ENDPOINT	6
 #define FUNCTION	(sin(x))

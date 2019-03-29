@@ -5,16 +5,17 @@ int main()
 	double standardValue = STANDARDVALUE;
 	double lastErrorValue;
 
-	cout << standardValue << endl;
-	cout << scientific << standardValue << endl;
+	/*cout << standardValue << endl;
+	cout << scientific << standardValue << endl;*/
 
 	ofstream outputFile;
 	outputFile.open("result.csv", ios::binary);
 
 	outputFile << "trapzoid" << endl;
-	outputFile <<" ," << "»ý·ÖÖµ" << "," << "Îó²î" << "," << "Îó²î½×" << endl;
+	outputFile << " ," << "»ý·ÖÖµ" << "," << "Îó²î" << "," << "Îó²î½×" << endl;
 	for (int i = 0; i < SIZE + 1; i++)
 	{
+		cout << "k = " << i << " running." << endl;
 		double result = trapezoid(&fx, STARTPOINT, ENDPOINT, i);
 		int j = 0;
 		double errorValue = standardValue - result;

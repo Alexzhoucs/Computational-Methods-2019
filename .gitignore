@@ -4,6 +4,7 @@
 *Debug*
 
 *.txt
+*.csv
 
 *.opendb
 
