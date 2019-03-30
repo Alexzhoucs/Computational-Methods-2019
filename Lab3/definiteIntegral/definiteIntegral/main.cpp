@@ -30,6 +30,27 @@ int main()
 		lastErrorValue = errorValue;
 	}
 	
+	outputFile << endl << "Simpson" << endl;
+	cout << endl << "Simpson" << endl;
+	outputFile << " ," << "»ý·ÖÖµ" << "," << "Îó²î" << "," << "Îó²î½×" << endl;
+
+	for (int i = 0; i < SIZE + 1; i++)
+	{
+		cout << "k = " << i << " running." << endl;
+		double result = simpson(&fx, STARTPOINT, ENDPOINT, i);
+		//int j = 0;
+		double errorValue = abs(standardValue - result);
+		outputFile << "k=" << i << "," << result << ",";
+		outputFile << scientific << errorValue << ",";
+		if (i > 0)
+		{
+			double orderOfError = errorOrder(errorValue, lastErrorValue);
+			outputFile << orderOfError;
+		}
+		outputFile << endl;
+		lastErrorValue = errorValue;
+	}
+
 	outputFile.close();
 	getchar();
 

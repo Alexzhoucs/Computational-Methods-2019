@@ -13,6 +13,7 @@ using namespace std;
 double fx(double x);
 double trapezoid(double(*fx)(double), double startPoint, double endPoint, int stepPower);
 double errorOrder(double thisError, double lastError);
+double simpson(double(*fx)(double), double startPoint, double endPoint, int stepPower);
 
 #pragma once
 

@@ -26,5 +26,8 @@
     <ClCompile Include="trapezoid.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Simpson.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
