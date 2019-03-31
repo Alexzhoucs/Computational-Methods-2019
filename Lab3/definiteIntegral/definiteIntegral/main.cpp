@@ -11,7 +11,7 @@ int main()
 	ofstream outputFile;
 	outputFile.open("result.csv", ios::binary);
 
-	outputFile << "trapzoid" << endl;
+	outputFile << "复化梯形积分" << endl;
 	outputFile << " ," << "积分值" << "," << "误差" << "," << "误差阶" << endl;
 	for (int i = 0; i < SIZE + 1; i++)
 	{
@@ -19,7 +19,7 @@ int main()
 		double result = trapezoid(&fx, STARTPOINT, ENDPOINT, i);
 		int j = 0;
 		double errorValue = standardValue - result;
-		outputFile << "k=" << i << "," << result << ",";
+		outputFile << "k=" << i << " , " << result << ",";
 		outputFile << scientific << errorValue << ",";
 		if (i > 0)
 		{
@@ -30,19 +30,19 @@ int main()
 		lastErrorValue = errorValue;
 	}
 	
-	outputFile << endl << "Simpson" << endl;
+	outputFile << endl << "复化Simpson积分" << endl;
 	cout << endl << "Simpson" << endl;
 	outputFile << " ," << "积分值" << "," << "误差" << "," << "误差阶" << endl;
 
-	for (int i = 0; i < SIZE + 1; i++)
+	for (int i = 1; i < SIZE + 1; i++)
 	{
 		cout << "k = " << i << " running." << endl;
 		double result = simpson(&fx, STARTPOINT, ENDPOINT, i);
 		//int j = 0;
 		double errorValue = abs(standardValue - result);
-		outputFile << "k=" << i << "," << result << ",";
+		outputFile << "k=" << i << " , " << result << ",";
 		outputFile << scientific << errorValue << ",";
-		if (i > 0)
+		if (i > 1)
 		{
 			double orderOfError = errorOrder(errorValue, lastErrorValue);
 			outputFile << orderOfError;
