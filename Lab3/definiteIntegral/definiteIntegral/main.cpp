@@ -59,6 +59,7 @@ int main()
 
 double fx(double x)
 {
+	//double value = x;
 	double value = FUNCTION;
 	return value;
 }

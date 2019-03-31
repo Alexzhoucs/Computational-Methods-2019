@@ -18,7 +18,7 @@ double simpson(double(*fx)(double), double startPoint, double endPoint, int step
  	for (int i = 0; i < m; i++)
 		result += 4 * fx(startPoint + stepLength * (2 * i + 1));
 	for (int i = 1; i < m; i++)
-		result += fx(startPoint + 2 * stepLength) * 2;
+		result += fx(startPoint + (2 * i)* stepLength) * 2;
 	result = result * (stepLength / (double)3);
 	return result;
 }
