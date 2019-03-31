@@ -18,7 +18,7 @@ int main()
 		cout << "k = " << i << " running." << endl;
 		double result = trapezoid(&fx, STARTPOINT, ENDPOINT, i);
 		int j = 0;
-		double errorValue = standardValue - result;
+		double errorValue = abs(standardValue - result);
 		outputFile << "k=" << i << " , " << result << ",";
 		outputFile << scientific << errorValue << ",";
 		if (i > 0)
