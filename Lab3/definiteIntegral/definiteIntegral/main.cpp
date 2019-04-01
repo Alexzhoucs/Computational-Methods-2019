@@ -52,6 +52,8 @@ int main()
 	}
 
 	outputFile.close();
+
+	cout << endl << "Press Enter to exit." << endl;
 	getchar();
 
 	return 0;
