@@ -60,8 +60,27 @@ void main()
 		return;
 	}
 
-	outputFile << endl << endl << "Secant:" << ',' << "X0 = 0" << ',' << "X1 = 1" << endl;
+	outputFile << endl << endl << "Secant:" << ',' << "X0 = 0" << ',' << "X1 = 0.1" << endl;
 	outputFile << "迭代步数k" << ',' << "x_k" << ',' << "f(x_k)" << endl;
+	result = secant(fx, 0, 0.1, 0, &outputFile);
+	if (result)
+	{
+		cout << "ERROR in secant: error code = " << result << endl;
+		getchar();
+		return;
+	}
+
+	outputFile << endl << endl << "Secant:" << ',' << "X0 = 0.5" << ',' << "X1 = 1" << endl;
+	outputFile << "迭代步数k" << ',' << "x_k" << ',' << "f(x_k)" << endl;
+	result = secant(fx, 0.5, 1, 0, &outputFile);
+	if (result)
+	{
+		cout << "ERROR in secant: error code = " << result << endl;
+		getchar();
+		return;
+	}
+
+
 
 	getchar();
 }
