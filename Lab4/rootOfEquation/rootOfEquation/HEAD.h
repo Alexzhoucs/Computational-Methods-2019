@@ -8,4 +8,5 @@ using namespace std;
 
 
 int newton(double(*fx)(double), double(*dfx)(double), double point, int k, ofstream* outputF);
+int secant(double(*fx)(double), double point1, double point2, int k, ofstream* outputF);
 

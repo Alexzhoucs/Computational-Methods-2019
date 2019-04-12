@@ -60,5 +60,8 @@ void main()
 		return;
 	}
 
+	outputFile << endl << endl << "Secant:" << ',' << "X0 = 0" << ',' << "X1 = 1" << endl;
+	outputFile << "µü´ú²½Êýk" << ',' << "x_k" << ',' << "f(x_k)" << endl;
+
 	getchar();
 }
