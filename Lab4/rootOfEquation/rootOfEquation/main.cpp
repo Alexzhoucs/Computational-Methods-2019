@@ -44,7 +44,6 @@ void main()
 	if (result)
 	{
 		cout << "ERROR in newton: error code = " << result << endl;
-		getchar();
 		return;
 	}
 
@@ -56,7 +55,6 @@ void main()
 	if (result)
 	{
 		cout << "ERROR in newton: error code = " << result << endl;
-		getchar();
 		return;
 	}
 
@@ -66,7 +64,6 @@ void main()
 	if (result)
 	{
 		cout << "ERROR in secant: error code = " << result << endl;
-		getchar();
 		return;
 	}
 
@@ -76,11 +73,8 @@ void main()
 	if (result)
 	{
 		cout << "ERROR in secant: error code = " << result << endl;
-		getchar();
 		return;
 	}
 
-
-
-	getchar();
+	return;
 }
