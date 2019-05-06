@@ -6,9 +6,12 @@ public class Main
 	public static void main(String args[])
 	{
 		final String inputFileName = "input.txt";
+		final String outputFileName = "output.csv";
 
-		equationSet eq = new equationSet();
-		eq.inputFromFile(inputFileName);
+		equationSet eqs = new equationSet();
+		eqs.inputFromFile(inputFileName);
+		eqs.jacobi(outputFileName);
+
 
 
 	}
