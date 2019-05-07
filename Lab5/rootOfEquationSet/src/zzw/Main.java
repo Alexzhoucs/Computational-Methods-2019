@@ -6,11 +6,13 @@ public class Main
 	public static void main(String args[])
 	{
 		final String inputFileName = "input.txt";
-		final String outputFileName = "output.csv";
+		final String outputFileName1 = "output-Jacobi.csv";
+		final String outputFileName2 = "output-GaussSeidel.csv";
 
 		equationSet eqs = new equationSet();
 		eqs.inputFromFile(inputFileName);
-		eqs.jacobi(outputFileName);
+		eqs.jacobi(outputFileName1);
+		eqs.GaussSeidel(outputFileName2);
 
 
 

@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.File;
 import java.text.DecimalFormat;
 
-public class equationSet
+class equationSet
 {
 	private double[][] A;
 	private double[] b;
@@ -54,7 +54,9 @@ public class equationSet
 
 	void jacobi(String outputFileName)
 	{
-		DecimalFormat df = new DecimalFormat("0.############E0");			//输出数据格式化
+		System.out.println("开始 Jacobi 迭代");
+
+		DecimalFormat df = new DecimalFormat("0.############E0");            //输出数据格式化
 
 		double[] x = new double[order];
 		for (int i = 0; i < order; i++)
@@ -62,21 +64,21 @@ public class equationSet
 
 		double difference = 1;                    //定义一个大于停止条件的初值
 		int steps = 0;
-		StringBuffer resultSB = new StringBuffer("");
+		StringBuilder resultSB = new StringBuilder("");
 		resultSB.append("Jacobi:");
 		resultSB.append(",");
 		for (int i = 1; i <= order; i++)
-			resultSB.append("X" + i +',');
+			resultSB.append("X").append(i).append(',');
 		resultSB.append("difference");
 		resultSB.append("\n");
 
-		resultSB.append("k = " + steps + ",");
+		resultSB.append("k = ").append(steps).append(",");
 		for (int i = 0; i < order; i++)
-			resultSB.append(x[i] + ",");
+			resultSB.append(x[i]).append(",");
 		resultSB.append("\n");
 
 
-//---------------------------------------------算法主体
+		//---------------------------------------------算法主体
 
 		while (difference > 1e-5)
 		{
@@ -94,21 +96,90 @@ public class equationSet
 				newX[i] = newX[i] / A[i][i] * (-1);
 			}
 
-			resultSB.append("k = " + steps + ",");					//输出分步数据
+			resultSB.append("k = ").append(steps).append(",");                    //输出分步数据
 			for (int i = 0; i < order; i++)
-				resultSB.append(df.format(newX[i]) + ",");
+				resultSB.append(df.format(newX[i])).append(",");
 
-			for(int i = 0;i <order;i++)
+			for (int i = 0; i < order; i++)
 				x[i] = Math.abs(x[i] - newX[i]);
 			difference = x[0];
-			for(int i = 1;i < order;i++)
-				if(x[i] > difference)
-					difference = x[i];
+			for (int i = 1; i < order; i++)
+				if (x[i] > difference) difference = x[i];
 
 			resultSB.append(df.format(difference));
 			resultSB.append("\n");
 
-			System.arraycopy(newX,0,x,0,order);
+			System.arraycopy(newX, 0, x, 0, order);
+		}
+
+		System.out.println(resultSB.toString());
+
+		File outputFile = new File(outputFileName);
+		try (PrintWriter out = new PrintWriter(outputFile))
+		{
+			out.print(resultSB.toString());
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	void GaussSeidel(String outputFileName)
+	{
+		System.out.println("开始 Gauss-Seidel 迭代");
+
+		DecimalFormat df = new DecimalFormat("0.############E0");            //输出数据格式化
+
+		double[] x = new double[order];
+		for (int i = 0; i < order; i++)
+			x[i] = 0;
+
+		double difference = 1;                    //定义一个大于停止条件的初值
+		int steps = 0;
+		StringBuilder resultSB = new StringBuilder("");
+		resultSB.append("Gauss-Seidel:").append(",");
+		for (int i = 1; i <= order; i++)
+			resultSB.append("X").append(i).append(',');
+		resultSB.append("difference");
+		resultSB.append("\n");
+
+		resultSB.append("k = ").append(steps).append(",");
+		for (int i = 0; i < order; i++)
+			resultSB.append(x[i]).append(",");
+		resultSB.append("\n");
+
+		while (difference > 1e-5)
+		{
+			steps++;
+
+			double[] oldX = new double[order];
+			System.arraycopy(x,0,oldX,0,order);
+
+			for(int i = 0;i < order;i++)
+			{
+				x[i] = 0;
+				for(int j = 0;j<order;j++)
+				{
+					if(j ==i)
+						continue;
+					x[i] += A[i][j] * x[j];
+				}
+				x[i] -= b[i];
+				x[i] = x[i] / A[i][i] *(-1);
+			}
+
+			resultSB.append("k = ").append(steps).append(",");                     //输出分步数据
+			for (int i = 0; i < order; i++)
+				resultSB.append(df.format(x[i])).append(",");
+
+			for (int i = 0; i < order; i++)
+				oldX[i] = Math.abs(x[i] - oldX[i]);
+			difference = oldX[0];
+			for (int i = 1; i < order; i++)
+				if (oldX[i] > difference) difference = oldX[i];
+
+			resultSB.append(df.format(difference));
+			resultSB.append("\n");
 		}
 
 		System.out.println(resultSB.toString());
